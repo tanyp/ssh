@@ -17,9 +17,6 @@ public class web {
     @GetMapping("/index")
     public String index(){
         ws.index();
-        for (int i = 0; i < 5; i++) {
-            System.out.println(i);
-        }
         return "Hello 悠哉大王的日常";
     }
 

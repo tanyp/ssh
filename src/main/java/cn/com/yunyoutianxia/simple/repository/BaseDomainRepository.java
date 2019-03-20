@@ -1,5 +1,7 @@
 package cn.com.yunyoutianxia.simple.repository;
 
+import org.hibernate.Session;
+
 import java.io.Serializable;
 
 /**
@@ -8,4 +10,8 @@ import java.io.Serializable;
 public interface BaseDomainRepository {
 
     <T> T get(Class<T> clazz, Serializable id);
+
+    <T> T load(Class<T> clazz, Serializable id);
+
+    Session getSession();
 }

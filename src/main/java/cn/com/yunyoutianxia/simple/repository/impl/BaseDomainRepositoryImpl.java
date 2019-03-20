@@ -15,6 +15,12 @@ public class BaseDomainRepositoryImpl extends AbstractHibernateDomain implements
     @SuppressWarnings("unchecked")
     public <T> T get(Class<T> clazz, Serializable id) {
         Session session = getSession();
-        return (T) session.get(clazz, id);
+        return session.get(clazz, id);
+    }
+
+    @Override
+    public <T> T load(Class<T> clazz, Serializable id) {
+        Session session = getSession();
+        return session.load(clazz, id);
     }
 }
