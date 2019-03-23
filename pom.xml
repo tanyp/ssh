@@ -22,29 +22,29 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>nexus</id>
-            <name>yytx nexus</name>
-            <url>http://172.16.116.102:8081/nexus/content/groups/public</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus</id>
-            <name>yytx nexus</name>
-            <url>http://172.16.116.102:8081/nexus/content/groups/public</url>
-        </pluginRepository>
-    </pluginRepositories>
-    <distributionManagement>
-        <repository>
-            <id>nexus</id>
-            <url>http://172.16.116.102:8081/nexus/content/repositories/snapshots/</url>
-        </repository>
-    </distributionManagement>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+            <!--<id>nexus</id>-->
+            <!--<name>yytx nexus</name>-->
+            <!--<url>http://172.16.116.102:8081/nexus/content/groups/public</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+    <!--<pluginRepositories>-->
+        <!--<pluginRepository>-->
+            <!--<id>nexus</id>-->
+            <!--<name>yytx nexus</name>-->
+            <!--<url>http://172.16.116.102:8081/nexus/content/groups/public</url>-->
+        <!--</pluginRepository>-->
+    <!--</pluginRepositories>-->
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>nexus</id>-->
+            <!--<url>http://172.16.116.102:8081/nexus/content/repositories/snapshots/</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 
     <dependencies>
         <!-- spring -->
@@ -57,20 +57,19 @@
         <!-- hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.4.1.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-ehcache</artifactId>
-            <version>5.4.1.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
             <artifactId>hibernate-envers</artifactId>
-            <version>5.4.1.Final</version>
+            <version>5.4.2.Final</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+            <version>5.4.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>3.7.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -132,7 +131,7 @@
         <profile>
             <id>dev</id>
             <properties>
-                <profile.jdbc.url>jdbc:mysql://192.168.1.121:3306/simple?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</profile.jdbc.url>
+                <profile.jdbc.url>jdbc:mysql://192.168.0.8:3306/simple?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true</profile.jdbc.url>
                 <profile.jdbc.username>root</profile.jdbc.username>
                 <profile.jdbc.password>123456</profile.jdbc.password>
             </properties>

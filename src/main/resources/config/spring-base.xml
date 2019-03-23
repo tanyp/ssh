@@ -81,10 +81,11 @@
                 <!-- 允许查询缓存, 个别查询仍然需要被设置为可缓存的.取值 true|false-->
                 <prop key="hibernate.cache.use_query_cache">true</prop>
                 <!-- 二级缓存的提供类-->
-                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
-                <prop key="hibernate.cache.provider_configuration_file_resource_path">config/ehcache.xml</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.internal.JCacheRegionFactory</prop>
+                <prop key="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</prop>
                 <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</prop>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.javax.cache.missing_cache_strategy">create</prop>
             </props>
         </property>
         <property name="annotatedClasses">
@@ -93,6 +94,7 @@
     </bean>
 
     <util:list id="annotatedClassesList">
+        <value>cn.com.yunyoutianxia.simple.domain.entity.Simple</value>
         <value>cn.com.yunyoutianxia.simple.domain.entity.FirmBase</value>
         <value>cn.com.yunyoutianxia.simple.domain.entity.FirmFlow</value>
         <value>cn.com.yunyoutianxia.simple.domain.entity.FirmWechat</value>

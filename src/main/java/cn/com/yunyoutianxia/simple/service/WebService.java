@@ -5,4 +5,6 @@ package cn.com.yunyoutianxia.simple.service;
  */
 public interface WebService {
     void index();
+
+    void save();
 }
