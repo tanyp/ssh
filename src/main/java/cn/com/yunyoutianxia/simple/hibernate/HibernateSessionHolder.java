@@ -1,4 +1,4 @@
-package cn.com.yunyoutianxia.simple.domain.common;
+package cn.com.yunyoutianxia.simple.hibernate;
 
 import org.hibernate.Session;
 

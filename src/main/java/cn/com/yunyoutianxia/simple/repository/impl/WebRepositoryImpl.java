@@ -1,5 +1,6 @@
 package cn.com.yunyoutianxia.simple.repository.impl;
 
+import cn.com.yunyoutianxia.simple.hibernate.repository.impl.BaseDomainRepositoryImpl;
 import cn.com.yunyoutianxia.simple.repository.WebRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package cn.com.yunyoutianxia.simple.service;
+package cn.com.yunyoutianxia.simple.service.local;
 
 /**
  * Created by tanyp on 2019/3/20

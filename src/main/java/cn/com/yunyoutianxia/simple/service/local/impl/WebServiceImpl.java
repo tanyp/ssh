@@ -1,9 +1,9 @@
-package cn.com.yunyoutianxia.simple.service.impl;
+package cn.com.yunyoutianxia.simple.service.local.impl;
 
 import cn.com.yunyoutianxia.simple.domain.entity.Simple;
 import cn.com.yunyoutianxia.simple.domain.factory.WebFactory;
 import cn.com.yunyoutianxia.simple.repository.WebRepository;
-import cn.com.yunyoutianxia.simple.service.WebService;
+import cn.com.yunyoutianxia.simple.service.local.WebService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,9 @@ public class WebServiceImpl implements WebService {
     @Override
     public void index() {
         Simple simple = repository.get(Simple.class, "1");
-        System.out.println(new Gson().toJson(simple));
+        if (simple != null){
+            System.out.println(new Gson().toJson(simple));
+        }
     }
 
     @Override

@@ -1,8 +1,9 @@
 /***********************************************************************
  * 深圳市云游天下科技有限公司 版权所有
  ***********************************************************************/
-package cn.com.yunyoutianxia.simple.domain.common;
+package cn.com.yunyoutianxia.simple.hibernate.domain;
 
+import cn.com.yunyoutianxia.simple.hibernate.HibernateSessionHolder;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,12 @@ public abstract class AbstractHibernateDomain {
             if (session == null) {
                 session = sessionFactory.openSession();
                 HibernateSessionHolder.setSession(session);
-            } else if (!session.isOpen()) {
-                HibernateSessionHolder.remove();
-                session = sessionFactory.openSession();
-                HibernateSessionHolder.setSession(session);
             } else {
-                return null;
+                if (!session.isOpen()) {
+                    HibernateSessionHolder.remove();
+                    session = sessionFactory.openSession();
+                    HibernateSessionHolder.setSession(session);
+                }
             }
             return session;
         }

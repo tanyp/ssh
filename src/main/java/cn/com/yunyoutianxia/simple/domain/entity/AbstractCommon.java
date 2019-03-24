@@ -11,7 +11,7 @@ import java.io.Serializable;
 @MappedSuperclass
 public class AbstractCommon implements Serializable {
     @Id
-    @Column(name = "id_", nullable = false, length = 27)
+    @Column(name = "id_", nullable = false, length = 27, updatable = false)
     private String id;
 
     @Column(name = "name_", nullable = false, length = 50)

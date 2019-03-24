@@ -1,4 +1,4 @@
-package cn.com.yunyoutianxia.simple.repository;
+package cn.com.yunyoutianxia.simple.hibernate.repository;
 
 import org.hibernate.Session;
 
@@ -10,6 +10,8 @@ import java.io.Serializable;
 public interface BaseDomainRepository {
 
     <T> T get(Class<T> clazz, Serializable id);
+
+    <T> T getWithLock(Class<T> clazz, Serializable id);
 
     <T> T load(Class<T> clazz, Serializable id);
 
