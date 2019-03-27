@@ -4,7 +4,7 @@ import org.hibernate.Session;
 
 public class HibernateSessionHolder {
 
-	private static final ThreadLocal<Session> sessionThreadLocal = new ThreadLocal<Session>();
+	private static final ThreadLocal<Session> sessionThreadLocal = new ThreadLocal<>();
 	
 	public static void setSession(Session session){
 		sessionThreadLocal.set(session);
