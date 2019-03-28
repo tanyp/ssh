@@ -2,15 +2,11 @@ package cn.com.yunyoutianxia.simple.hibernate.domain.impl;
 
 import cn.com.yunyoutianxia.simple.hibernate.domain.AbstractHibernateDomain;
 import cn.com.yunyoutianxia.simple.hibernate.domain.BaseDomainFactory;
-import cn.com.yunyoutianxia.simple.vo.IDeleted;
 import org.hibernate.IdentifierLoadAccess;
 import org.hibernate.LockOptions;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Set;
 
 public class BaseDomainFactoryImpl extends AbstractHibernateDomain implements BaseDomainFactory {
 
@@ -72,61 +68,61 @@ public class BaseDomainFactoryImpl extends AbstractHibernateDomain implements Ba
 	public <T> void delete(Class<T> clazz, Serializable id) {
 		Session session = sessionFactory.getCurrentSession();
 		IdentifierLoadAccess<T> identifierLoadAccess = session.byId(clazz);
-		if(IDeleted.class.isAssignableFrom(clazz)){
-			Object entity = identifierLoadAccess.load(id);
-			if(entity == null){
-				return;
-			}
-			((IDeleted) entity).doDelete();
-			session.update(entity);
-		}else{
+//		if(IDeleted.class.isAssignableFrom(clazz)){
+//			Object entity = identifierLoadAccess.load(id);
+//			if(entity == null){
+//				return;
+//			}
+//			((IDeleted) entity).doDelete();
+//			session.update(entity);
+//		}else{
 			Object entity = identifierLoadAccess.getReference(id);
 			session.delete(entity);
-		}
+//		}
 	}
 
 	@Override
 	public <T> void delete(T entity) {
 		Session session = sessionFactory.getCurrentSession();
-		if(entity instanceof IDeleted){
-			((IDeleted) entity).doDelete();
-			session.update(entity);
-		}else{
+//		if(entity instanceof IDeleted){
+//			((IDeleted) entity).doDelete();
+//			session.update(entity);
+//		}else{
 			session.delete(entity);
-		}
+//		}
 	}
 
-	@SuppressWarnings("rawtypes")
-	protected void setParamPair(Query query, ParamPair paramPair) {
-		if (paramPair != null && paramPair.size() > 0) {
-			Set<String> keys = paramPair.keySet();
-			for (String key : keys) {
-				Object value = paramPair.get(key);
-				if (value.getClass().isArray()) {
-					query.setParameterList(key, (Object[]) value);
-				} else if (Collection.class.isAssignableFrom(value.getClass())) {
-					query.setParameterList(key, (Collection) value);
-				} else {
-					query.setParameter(key, value);
-				}
-			}
-		}
-	}
+//	@SuppressWarnings("rawtypes")
+//	protected void setParamPair(Query query, ParamPair paramPair) {
+//		if (paramPair != null && paramPair.size() > 0) {
+//			Set<String> keys = paramPair.keySet();
+//			for (String key : keys) {
+//				Object value = paramPair.get(key);
+//				if (value.getClass().isArray()) {
+//					query.setParameterList(key, (Object[]) value);
+//				} else if (Collection.class.isAssignableFrom(value.getClass())) {
+//					query.setParameterList(key, (Collection) value);
+//				} else {
+//					query.setParameter(key, value);
+//				}
+//			}
+//		}
+//	}
 
-	protected int executeByHQL(String hql, ParamPair paramPair,
-							   Callback callback) {
-		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery(hql);
-		setParamPair(query, paramPair);
-		if (callback != null) {
-			callback.before(session, query);
-		}
-		return query.executeUpdate();
-	}
-
-	protected int executeByHQL(String hql, ParamPair paramPair) {
-		return executeByHQL(hql, paramPair, null);
-	}
+//	protected int executeByHQL(String hql, ParamPair paramPair,
+//							   Callback callback) {
+//		Session session = sessionFactory.getCurrentSession();
+//		Query query = session.createQuery(hql);
+//		setParamPair(query, paramPair);
+//		if (callback != null) {
+//			callback.before(session, query);
+//		}
+//		return query.executeUpdate();
+//	}
+//
+//	protected int executeByHQL(String hql, ParamPair paramPair) {
+//		return executeByHQL(hql, paramPair, null);
+//	}
 
 
 }

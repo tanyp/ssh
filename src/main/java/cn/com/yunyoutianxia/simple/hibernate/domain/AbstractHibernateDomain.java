@@ -1,6 +1,3 @@
-/***********************************************************************
- * 深圳市云游天下科技有限公司 版权所有
- ***********************************************************************/
 package cn.com.yunyoutianxia.simple.hibernate.domain;
 
 import cn.com.yunyoutianxia.simple.hibernate.HibernateSessionHolder;
