@@ -1,5 +1,8 @@
 package cn.com.yunyoutianxia.simple.domain.entity;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,6 +11,7 @@ import java.util.List;
  */
 @Table(name = "tour_firm")
 @Entity
+@Cache(region = "firmCache", usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Firm extends AbstractCommon {
 
     @Column(name = "other_", length = 50)
