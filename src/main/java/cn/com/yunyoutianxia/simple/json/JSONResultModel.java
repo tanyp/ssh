@@ -3,8 +3,6 @@ package cn.com.yunyoutianxia.simple.json;
 import java.io.Serializable;
 
 public class JSONResultModel<T> implements Serializable {
-
-    private static final long serialVersionUID = -5475146988170264776L;
     private int ver;
     private boolean ret = true;
     private String msg;

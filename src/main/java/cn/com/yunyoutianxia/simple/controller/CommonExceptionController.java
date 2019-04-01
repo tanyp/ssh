@@ -1,4 +1,4 @@
-package cn.com.yunyoutianxia.simple.web;
+package cn.com.yunyoutianxia.simple.controller;
 
 import cn.com.yunyoutianxia.simple.json.JSONResultModel;
 import org.springframework.util.StringUtils;

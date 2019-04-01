@@ -3,12 +3,7 @@ package cn.com.yunyoutianxia.simple.param;
 import java.io.Serializable;
 
 public class QueryParam implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    protected String strategy;
-
     protected Integer start;
-
     protected Integer limit;
     /** -2=不需要总数 -1=需要总数 大于等于0=总数 */
     protected Integer total = -2;
@@ -47,14 +42,6 @@ public class QueryParam implements Serializable {
 
     public final void setTotal(Integer total){
         this.total = total;
-    }
-
-    public final String getStrategy() {
-        return strategy;
-    }
-
-    public final void setStrategy(String strategy) {
-        this.strategy = strategy;
     }
 
     public final Integer getStart() {
